@@ -11,8 +11,8 @@ M.setup = function()
       default_config = {
         cmd = { 'ty', 'server' },
         filetypes = { 'python' },
-        root_dir = function(_)
-          return vim.loop.cwd()
+        root_dir = function(fname)
+          return util.root_pattern('ty.toml', 'pyproject.toml')(fname) or vim.loop.cwd()
         end,
         settings = {},
       }
